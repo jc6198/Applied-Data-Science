@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Donation Survey</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .scale {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+
+    .scale label {
+      font-size: 14px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #6ca044;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #5a8a39;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h2>Quick Survey</h2>
+
+  <p>How likely are you to donate to this organization?</p>
+    <p>1: Least Likely || 10: Most Likely</p>
+    
+
+  <form id="surveyForm">
+
+    <div class="scale">
+      <label><input type="radio" name="likelihood" value="1">1</label>
+      <label><input type="radio" name="likelihood" value="2">2</label>
+      <label><input type="radio" name="likelihood" value="3">3</label>
+      <label><input type="radio" name="likelihood" value="4">4</label>
+      <label><input type="radio" name="likelihood" value="5">5</label>
+      <label><input type="radio" name="likelihood" value="6">6</label>
+      <label><input type="radio" name="likelihood" value="7">7</label>
+      <label><input type="radio" name="likelihood" value="8">8</label>
+      <label><input type="radio" name="likelihood" value="9">9</label>
+      <label><input type="radio" name="likelihood" value="10">10</label>
+    </div>
+
+    <button type="submit">Submit</button>
+
+  </form>
+
+</div>
+
+<script>
+  // Track page visit
+  console.log("Questionnaire page viewed");
+
+  document.getElementById("surveyForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const selected = document.querySelector('input[name="likelihood"]:checked');
+
+    if (!selected) {
+      alert("Please select a number");
+      return;
+    }
+
+    const value = selected.value;
+
+    // Track response
+    console.log("User likelihood:", value);
+
+    // OPTIONAL: store locally
+    localStorage.setItem("donationLikelihood", value);
+
+    alert("Thank you for your response!");
+
+    // redirect or stay
+    window.location.href = "index.html";
+  });
+</script>
+
+</body>
+</html>
